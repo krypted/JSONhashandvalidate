@@ -10,7 +10,8 @@ hasher is the name of the function. You can change to any other name as needed. 
 
 `sh upload-validator.sh validator`
 
-validator is the default name of the function, but the name can be changed as needed. For both methods the requests are the same. Simply post some json using the hasher service at the endpoint '/', it will then create a hash and return a json with a 'hash' property (see the attached image).
+validator is the default name of the function, but the name can be changed as needed. For both methods the requests are the same. Simply post some json using the hasher service at the endpoint '/'. It will then create a hash and return a json with a 'hash' property (see the attached image). 
 
-For validate this body, send a post request to validator service at '/', with 2 properties, 'json' containing the json to validate, 'hash' containing the hash created from the previous request.
-It will retuning a with a 'valid' property of type boolean, indicating if the json matches the hash. (see the attached image)
+To then validate the hash with the json body, send a post request to the validator service at '/', with 2 properties, 'json' containing the json to validate, 'hash' containing the hash created from the previous request.
+
+It will return with a 'valid' property of type boolean, indicating if the json matches the hash.
