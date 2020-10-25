@@ -1,0 +1,16 @@
+This project contains microservices or local services used to hash a json dump using bcrypt.
+
+There are two scripts to hash and then validate the hashing performed. This includes one service for each task. To run the hasher service, run the run-hasher.sh script. To run the validator service, run the run-validator.sh script.
+
+For running as lambdas, there are two scripts to upload the functions. To upload the hash function on aws use the command: 
+
+`sh upload-hasher.sh hasher`
+
+hasher is the name of the function. You can change to any other name as needed. To upload the validator funciton on aws use the command: 
+
+`sh upload-validator.sh validator`
+
+validator is the default name of the function, but the name can be changed as needed. For both methods the requests are the same. Simply post some json using the hasher service at the endpoint '/', it will then create a hash and return a json with a 'hash' property (see the attached image).
+
+For validate this body, send a post request to validator service at '/', with 2 properties, 'json' containing the json to validate, 'hash' containing the hash created from the previous request.
+It will retuning a with a 'valid' property of type boolean, indicating if the json matches the hash. (see the attached image)
